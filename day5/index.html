@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 5 - Users</title>
+    <style>
+        :root {
+            --bg: #0f172a;
+            --card: #1e293b;
+            --text: #e2e8f0;
+            --muted: #94a3b8;
+            --btn-bg: #38bdf8;
+            --btn-text: #0f172a;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+            padding: 2rem;
+        }
+
+        main {
+            max-width: 640px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            margin-bottom: 1.5rem;
+        }
+
+        .controls {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+            flex-wrap: wrap;
+            margin-bottom: 1rem;
+        }
+
+        label {
+            font-weight: 600;
+        }
+
+        input {
+            padding: 0.5rem 0.75rem;
+            border-radius: 7px;
+            border: 1px solid var(--muted);
+            background-color: var(--card);
+            color: var(--text);
+            font-size: 0.95rem;
+        }
+
+        button {
+            padding: 0.55rem 1.1rem;
+            border: none;
+            border-radius: 7px;
+            background-color: var(--btn-bg);
+            color: var(--btn-text);
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: opacity 0.2s;
+        }
+
+        button:hover {
+            opacity: 0.85;
+        }
+
+        button:disabled {
+            cursor: not-allowed;
+            opacity: 0.5;
+        }
+
+        #status {
+            margin: 1rem 0;
+            color: var(--muted);
+        }
+
+        #status.error {
+            color: #f87171;
+        }
+
+        #status.success {
+            color: #4ade80;
+        }
+
+        #users-list {
+            list-style: none;
+            display: grid;
+            gap: 0.75rem;
+        }
+
+        #users-list li {
+            background-color: var(--card);
+            border-radius: 10px;
+            padding: 1rem 1.25rem;
+        }
+
+        #users-list strong {
+            display: block;
+            font-size: 1.05rem;
+            margin-bottom: 0.35rem;
+        }
+
+        #users-list span {
+            display: block;
+            color: var(--muted);
+            font-size: 0.9rem;
+        }
+    </style>
+<base target="_blank">
+</head>
+<body>
+    <main>
+        <h1>Day 5 - User Directory</h1>
+
+        <div class="controls">
+            <button id="load-users">Load Users</button>
+
+            <label for="filter-input">Filter by name:</label>
+            <input type="text" id="filter-input" placeholder="Type a name...">
+        </div>
+
+        <p id="status"></p>
+        <ul id="users-list"></ul>
+    </main>
+
+    <script src="users.js" defer></script>
+</body>
+</html>
