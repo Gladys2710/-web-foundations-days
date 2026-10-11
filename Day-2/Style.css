@@ -1,0 +1,327 @@
+/* =============================================================
+   Day 2 - QuickNotes App  |  Shared Stylesheet
+   Covers: reset, header, nav (Flexbox), main layout, features
+   grid, shortcuts table, feedback form, button transition,
+   and a 600 px mobile breakpoint.
+   ============================================================= */
+
+/* --- 1. BOX-SIZING RESET ------------------------------------ */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* --- 2. BASE / TYPOGRAPHY ----------------------------------- */
+:root {
+  --clr-primary:    #4f46e5;
+  --clr-primary-dk: #3730a3;
+  --clr-accent:     #06b6d4;
+  --clr-bg:         #f8fafc;
+  --clr-surface:    #ffffff;
+  --clr-text:       #1e293b;
+  --clr-muted:      #64748b;
+  --clr-border:     #e2e8f0;
+  --radius:         0.5rem;
+  --shadow:         0 2px 8px rgba(0, 0, 0, 0.08);
+  --transition:     0.25s ease;
+  --max-width:      900px;
+}
+
+body {
+  font-family: "Segoe UI", system-ui, sans-serif;
+  font-size: 1rem;
+  line-height: 1.6;
+  background-color: var(--clr-bg);
+  color: var(--clr-text);
+}
+
+/* --- 3. HEADER ---------------------------------------------- */
+header {
+  background: linear-gradient(135deg, var(--clr-primary) 0%, var(--clr-primary-dk) 100%);
+  color: #ffffff;
+  padding: 1.25rem 2rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+header h1 {
+  font-size: 1.75rem;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+
+header p {
+  font-size: 0.9rem;
+  opacity: 0.85;
+  margin-top: 0.25rem;
+}
+
+nav {
+  background-color: var(--clr-primary-dk);
+  padding: 0.6rem 2rem;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+}
+
+nav a {
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 500;
+  padding: 0.3rem 0.6rem;
+  border-radius: var(--radius);
+  transition: background-color var(--transition), opacity var(--transition);
+}
+
+nav a:hover,
+nav a[aria-current="page"] {
+  background-color: rgba(255, 255, 255, 0.18);
+  opacity: 1;
+}
+
+main {
+  max-width: var(--max-width);
+  margin: 2rem auto;
+  padding: 0 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+main h2 {
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--clr-primary);
+  border-left: 4px solid var(--clr-accent);
+  padding-left: 0.6rem;
+  margin-bottom: 1rem;
+}
+
+/* --- 6. FEATURES LIST - CSS GRID RESPONSIVE CARDS ----------- */
+.features-list {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+.features-list li {
+  background: var(--clr-surface);
+  border: 1px solid var(--clr-border);
+  border-radius: var(--radius);
+  padding: 1rem 1.1rem;
+  box-shadow: var(--shadow);
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  font-size: 0.95rem;
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+
+.features-list li:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+}
+
+.features-list li::before {
+  content: "\2736";
+  color: var(--clr-accent);
+  flex-shrink: 0;
+  margin-top: 0.05rem;
+}
+
+/* --- 7. SHORTCUTS TABLE ------------------------------------- */
+.shortcuts-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--clr-surface);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+}
+
+.shortcuts-table caption {
+  font-size: 0.85rem;
+  color: var(--clr-muted);
+  margin-bottom: 0.4rem;
+  text-align: left;
+}
+
+.shortcuts-table th,
+.shortcuts-table td {
+  border: 1px solid var(--clr-border);
+  padding: 0.65rem 1rem;
+  text-align: left;
+  font-size: 0.9rem;
+}
+
+.shortcuts-table thead th {
+  background-color: var(--clr-primary);
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.shortcuts-table tbody tr:nth-child(even) {
+  background-color: #f1f5f9;
+}
+
+.shortcuts-table tbody tr:hover {
+  background-color: #e0e7ff;
+}
+
+kbd {
+  display: inline-block;
+  background: #e2e8f0;
+  border: 1px solid #cbd5e1;
+  border-radius: 4px;
+  padding: 0.1em 0.45em;
+  font-family: "Cascadia Code", "Consolas", monospace;
+  font-size: 0.82rem;
+  color: var(--clr-text);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12);
+}
+
+/* --- 8. FEEDBACK FORM - STACKED, FULL WIDTH ----------------- */
+.feedback-form {
+  background: var(--clr-surface);
+  border: 1px solid var(--clr-border);
+  border-radius: var(--radius);
+  padding: 1.5rem 1.75rem;
+  box-shadow: var(--shadow);
+}
+
+.feedback-form .form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  margin-bottom: 1.1rem;
+}
+
+.feedback-form label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--clr-text);
+}
+
+.feedback-form input,
+.feedback-form textarea,
+.feedback-form select {
+  width: 100%;
+  padding: 0.55rem 0.75rem;
+  border: 1px solid var(--clr-border);
+  border-radius: var(--radius);
+  font-size: 0.95rem;
+  font-family: inherit;
+  color: var(--clr-text);
+  background: var(--clr-bg);
+  transition: border-color var(--transition), box-shadow var(--transition);
+}
+
+.feedback-form input:focus,
+.feedback-form textarea:focus,
+.feedback-form select:focus {
+  outline: none;
+  border-color: var(--clr-primary);
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.18);
+}
+
+.feedback-form textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+/* --- 9. BUTTONS - TRANSITION -------------------------------- */
+button,
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  padding: 0.6rem 1.4rem;
+  background-color: var(--clr-primary);
+  color: #ffffff;
+  font-size: 0.95rem;
+  font-weight: 600;
+  font-family: inherit;
+  border: none;
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: background-color var(--transition),
+              box-shadow var(--transition),
+              transform var(--transition);
+}
+
+button:hover,
+.btn:hover {
+  background-color: var(--clr-primary-dk);
+  box-shadow: 0 4px 14px rgba(79, 70, 229, 0.35);
+  transform: translateY(-2px);
+}
+
+button:active,
+.btn:active {
+  transform: translateY(0);
+  box-shadow: none;
+}
+
+/* --- 10. FOOTER --------------------------------------------- */
+footer {
+  text-align: center;
+  padding: 1.25rem 1rem;
+  font-size: 0.85rem;
+  color: var(--clr-muted);
+  border-top: 1px solid var(--clr-border);
+  margin-top: 2rem;
+}
+
+/* --- 11. RESPONSIVE - max-width: 600px ---------------------- */
+@media (max-width: 600px) {
+  header {
+    padding: 1rem 1.25rem;
+  }
+
+  header h1 {
+    font-size: 1.35rem;
+  }
+
+  nav ul {
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+  }
+
+  main {
+    margin: 1.25rem auto;
+    padding: 0 1rem;
+    gap: 1.75rem;
+  }
+
+  .features-list {
+    grid-template-columns: 1fr;
+  }
+
+  .shortcuts-table {
+    display: block;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .feedback-form {
+    padding: 1.1rem 1rem;
+  }
+
+  button,
+  .btn {
+    width: 100%;
+  }
+}
+
